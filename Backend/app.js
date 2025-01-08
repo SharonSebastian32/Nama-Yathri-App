@@ -1,10 +1,12 @@
-const dotnev = require("dotenv");
-dotnev.config();
+const dotenv = require("dotenv");
+dotenv.config();
 const morgan = require("morgan");
 const cors = require("cors");
 const express = require("express");
+const connectToDb = require("./db/db");
 const app = express();
 
+connectToDb();
 app.use(morgan("dev"));
 app.use(cors());
 app.get("/", (req, res) => {
